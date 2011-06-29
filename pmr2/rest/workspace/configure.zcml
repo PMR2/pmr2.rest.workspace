@@ -1,0 +1,32 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    >
+
+  <browser:pages
+      for="pmr2.app.workspace.interfaces.IWorkspaceContainer"
+      class=".view.WorkspaceContainerJsonView"
+      permission="zope2.View"
+      >
+
+    <browser:page
+        name="contents.json"
+        attribute="contents"
+        />
+
+  </browser:pages>
+
+  <browser:pages
+      for="pmr2.app.workspace.interfaces.IWorkspace"
+      class=".view.WorkspaceJsonView"
+      permission="zope2.View"
+      >
+
+    <browser:page
+        name="info.json"
+        attribute="info"
+        />
+
+  </browser:pages>
+
+</configure>

@@ -1,5 +1,9 @@
+import zope.interface
+import zope.component
+
 from Products.CMFCore.utils import getToolByName
 
+from pmr2.rest.workspace.interfaces import IWorkspaceExtraUtil
 from pmr2.rest.workspace.base import BaseJsonView
 
 
@@ -43,6 +47,13 @@ class WorkspaceJsonView(BaseJsonView):
         storage = self.context.storage
 
         values = [title, description, storage,]
+
+        for name, util in zope.component.getUtilitiesFor(IWorkspaceExtraUtil):
+            key = name
+            value = util(self.context)
+
+            keys.append(key)
+            values.append(value)
 
         result = dict(zip(keys, values))
 

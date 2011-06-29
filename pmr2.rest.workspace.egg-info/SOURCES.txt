@@ -14,3 +14,7 @@ pmr2.rest.workspace.egg-info/requires.txt
 pmr2.rest.workspace.egg-info/top_level.txt
 pmr2/rest/__init__.py
 pmr2/rest/workspace/__init__.py
+pmr2/rest/workspace/base.py
+pmr2/rest/workspace/configure.zcml
+pmr2/rest/workspace/interfaces.py
+pmr2/rest/workspace/view.py

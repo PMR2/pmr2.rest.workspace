@@ -3,30 +3,34 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     >
 
-  <browser:pages
+  <browser:view
+      name="view.json"
       for="pmr2.app.workspace.interfaces.IWorkspaceContainer"
+      provides=".interfaces.IJsonView"
       class=".view.WorkspaceContainerJsonView"
-      permission="zope2.View"
+      permission="zope2.Public"
       >
 
     <browser:page
-        name="contents.json"
+        name="contents"
         attribute="contents"
         />
 
-  </browser:pages>
+  </browser:view>
 
-  <browser:pages
+  <browser:view
+      name="view.json"
       for="pmr2.app.workspace.interfaces.IWorkspace"
+      provides=".interfaces.IJsonView"
       class=".view.WorkspaceJsonView"
-      permission="zope2.View"
+      permission="zope2.Public"
       >
 
     <browser:page
-        name="info.json"
+        name="info"
         attribute="info"
         />
 
-  </browser:pages>
+  </browser:view>
 
 </configure>

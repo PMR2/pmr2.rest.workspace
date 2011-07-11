@@ -1,12 +1,17 @@
 import json
 
+import zope.interface
 from zope.publisher.browser import BrowserView
+
+from pmr2.rest.workspace.interfaces import IJsonView
 
 
 class BaseJsonView(BrowserView):
     """\
     Returns list of workspaces within the container.
     """
+
+    zope.interface.implements(IJsonView)
 
     indent = 2
     # XXX if we are doing this, we need to make sure this only

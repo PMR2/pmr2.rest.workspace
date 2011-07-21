@@ -1,22 +1,34 @@
 import json
 
 import zope.interface
+from zope.publisher.interfaces import IPublishTraverse
 from zope.publisher.browser import BrowserView
 
+from pmr2.rest.workspace.interfaces import IRestView
 from pmr2.rest.workspace.interfaces import IJsonView
 
 
-class BaseJsonView(BrowserView):
+class RestView(BrowserView):
     """\
-    Returns list of workspaces within the container.
+    The "container" for all the get views.
     """
 
-    zope.interface.implements(IJsonView)
+    zope.interface.implements(IRestView, IPublishTraverse)
+
+
+class JsonGetView(BrowserView):
+    """\
+    The Json Get view
+    """
 
     indent = 2
-    # XXX if we are doing this, we need to make sure this only
-    # return data that is NOT private
     origin = '*'
+
+    def update(self):
+        pass
+
+    def render(self):
+        pass
 
     def dumps(self, result):
         self.request.response.setHeader('Content-type', 'application/json')
@@ -25,10 +37,14 @@ class BaseJsonView(BrowserView):
                 self.origin)
         return json.dumps(result, indent=self.indent)
 
+    def __call__(self):
+        self.update()
+        return self.render()
 
-class BaseJsonEdit(BaseJsonView):
+
+class JsonPostView(JsonGetView):
     """\
-    Returns list of workspaces within the container.
+    The Json Post view
     """
 
     origin = None

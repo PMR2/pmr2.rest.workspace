@@ -19,16 +19,18 @@ this out, we need to import required classes and set up some data.
     >>> self.portal.workspace.test2.reindexObject()
     >>> from pmr2.testing.base import TestRequest
     >>> request = TestRequest()
-    >>> from pmr2.rest.workspace import view
     >>> from pmr2.rest.workspace import base
-    >>> base.BaseJsonView.indent = 4
+    >>> from pmr2.rest.workspace import page
+    >>> from pmr2.rest.workspace import view
+    >>> base.JsonGetView.indent = 4
 
 We will test the workspace listing list and see that the request will 
 return the list in JSON format.
 ::
 
-    >>> v = view.WorkspaceContainerJsonView(self.portal.workspace, request)
-    >>> result = v.contents()
+    >>> v = view.WorkspaceContainerRestView(self.portal.workspace, request)
+    >>> p = page.WorkspaceContainerContents(v, request)
+    >>> result = p.render()
     >>> print result
     {
         "keys": [
@@ -50,8 +52,9 @@ return the list in JSON format.
 Do the same with one of the workspace
 ::
 
-    >>> v = view.WorkspaceJsonView(self.portal.workspace.test1, request)
-    >>> result = v.info()
+    >>> v = view.WorkspaceRestView(self.portal.workspace.test1, request)
+    >>> p = page.WorkspaceInfo(v, request)
+    >>> result = p.render()
     >>> print result
     {
         "storage": "dummy_storage",

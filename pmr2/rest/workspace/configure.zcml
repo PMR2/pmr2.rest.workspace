@@ -4,33 +4,31 @@
     >
 
   <browser:view
-      name="view.json"
+      name="rest"
       for="pmr2.app.workspace.interfaces.IWorkspaceContainer"
-      provides=".interfaces.IJsonView"
-      class=".view.WorkspaceContainerJsonView"
+      class=".view.WorkspaceContainerRestView"
       permission="zope2.Public"
-      >
-
-    <browser:page
-        name="contents"
-        attribute="contents"
-        />
-
-  </browser:view>
+      />
 
   <browser:view
-      name="view.json"
+      name="rest"
       for="pmr2.app.workspace.interfaces.IWorkspace"
-      provides=".interfaces.IJsonView"
-      class=".view.WorkspaceJsonView"
+      class=".view.WorkspaceRestView"
       permission="zope2.Public"
-      >
+      />
 
-    <browser:page
-        name="info"
-        attribute="info"
-        />
+  <browser:page
+      for=".view.WorkspaceContainerRestView"
+      class=".page.WorkspaceContainerContents"
+      name="contents.json"
+      permission="zope2.Public"
+      />
 
-  </browser:view>
+  <browser:page
+      for=".view.WorkspaceRestView"
+      class=".page.WorkspaceInfo"
+      name="info.json"
+      permission="zope2.Public"
+      />
 
 </configure>

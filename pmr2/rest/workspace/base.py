@@ -48,3 +48,7 @@ class JsonPostView(JsonGetView):
     """
 
     origin = None
+
+    def update(self):
+        # XXX verify the correct authentication method here?
+        pass

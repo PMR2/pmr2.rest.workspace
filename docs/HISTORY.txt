@@ -1,8 +1,9 @@
 Changelog
 =========
 
-master - Unreleased
-----------------
+0.1 - Released (2011-08-23)
+---------------------------
 
-* Initial release
+* Initial demonstration release.
+* Provides basic workspace information.
 

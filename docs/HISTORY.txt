@@ -1,8 +1,9 @@
 Changelog
 =========
 
-master - Unreleased
-----------------
+0.2 - Released (2012-09-03)
+---------------------------
 
-* Initial release
+* PMR2 compatibility release.
+
 
